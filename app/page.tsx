@@ -1,103 +1,300 @@
-import Image from "next/image";
+﻿'use client';
 
-export default function Home() {
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Text,
+  Button,
+  Grid,
+  GridItem,
+  useColorMode,
+  useColorModeValue,
+  IconButton,
+  VStack,
+  HStack,
+  Card,
+  CardBody,
+  Badge,
+  Link,
+  SimpleGrid,
+} from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
+import { 
+  FiSun, 
+  FiMoon,
+} from 'react-icons/fi';
+import { SiSpring, SiNodedotjs, SiNextdotjs, SiJavascript, SiPostgresql, SiDocker, SiGit } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+
+export default function Portfolio() {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const [scrolled, setScrolled] = useState(false);
+
+  // Cores baseadas no Figma
+  const bgColor = useColorModeValue('#F7F7F8', '#0C0C0D');
+  const surfaceColor = useColorModeValue('#FFFFFF', '#121214');
+  const textColor = useColorModeValue('#111111', '#F5F5F7');
+  const mutedColor = useColorModeValue('#E5E5E7', '#2C2C2E');
+  const textSecondary = useColorModeValue('#374151', '#D1D5DB');
+  const accentBlue = '#1E40FF';
+  const accentPurple = '#8B5CF6';
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const skills = [
+    { name: 'Java', icon: FaJava, color: '#f89820' },
+    { name: 'Spring Boot', icon: SiSpring, color: '#6db33f' },
+    { name: 'Node.js', icon: SiNodedotjs, color: '#68a063' },
+    { name: 'Next.js', icon: SiNextdotjs, color: textColor },
+    { name: 'JavaScript', icon: SiJavascript, color: '#f7df1e' },
+    { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791' },
+    { name: 'Docker', icon: SiDocker, color: '#0db7ed' },
+    { name: 'Git', icon: SiGit, color: '#f05032' }
+  ];
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <Box bg={bgColor} color={textColor} minH="100vh" transition="all 0.2s">
+      {/* Header/Navbar */}
+      <Box
+        position="sticky"
+        top={0}
+        zIndex={50}
+        bg={scrolled ? `${surfaceColor}CC` : 'transparent'}
+        backdropFilter={scrolled ? 'blur(20px)' : 'none'}
+        borderBottom={scrolled ? `1px solid ${mutedColor}` : 'none'}
+        transition="all 0.3s"
+      >
+        <Container maxW="1200px" py={4}>
+          <Flex justify="space-between" align="center">
+            <Heading
+              size="lg"
+              fontWeight="600"
+              bgGradient={`linear(to-r, ${accentBlue}, ${accentPurple})`}
+              bgClip="text"
+              letterSpacing="tight"
+            >
+              VQ
+            </Heading>
+            
+            <HStack spacing={8} display={{ base: 'none', md: 'flex' }}>
+              <Link href="#about" _hover={{ color: accentBlue }} transition="all 0.2s">
+                Sobre
+              </Link>
+              <Link href="#projects" _hover={{ color: accentBlue }} transition="all 0.2s">
+                Projetos
+              </Link>
+              <Link href="#experience" _hover={{ color: accentBlue }} transition="all 0.2s">
+                Experiência
+              </Link>
+              <Link href="#contact" _hover={{ color: accentBlue }} transition="all 0.2s">
+                Contato
+              </Link>
+            </HStack>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            <IconButton
+              aria-label="Toggle theme"
+              icon={colorMode === 'light' ? <FiMoon /> : <FiSun />}
+              onClick={toggleColorMode}
+              bg={surfaceColor}
+              border={`1px solid ${mutedColor}`}
+              _hover={{ transform: 'scale(1.05)' }}
+              transition="all 0.2s"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          </Flex>
+        </Container>
+      </Box>
+
+      <Container maxW="1200px" px={6}>
+        {/* Hero Section */}
+        <Grid
+          templateColumns={{ base: '1fr', lg: '7fr 5fr' }}
+          gap={12}
+          alignItems="center"
+          minH="calc(100vh - 80px)"
+          py={20}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <GridItem>
+            <VStack align="start" spacing={6}>
+              <Badge
+                px={4}
+                py={2}
+                borderRadius="full"
+                bg={`${accentBlue}1A`}
+                color={accentBlue}
+                fontSize="sm"
+                fontWeight="500"
+              >
+                Disponível para projetos
+              </Badge>
+              
+              <Heading
+                size={{ base: '3xl', lg: '4xl' }}
+                fontWeight="700"
+                lineHeight="tight"
+              >
+                Olá, eu sou{' '}
+                <Text
+                  as="span"
+                  bgGradient={`linear(to-r, ${accentBlue}, ${accentPurple})`}
+                  bgClip="text"
+                >
+                  Vinícius Silva Queiroz
+                </Text>
+              </Heading>
+              
+              <Text
+                fontSize="xl"
+                color={textSecondary}
+                maxW="2xl"
+                lineHeight="relaxed"
+              >
+                Desenvolvedor Fullstack focado em soluções escaláveis e intuitivas. 
+                Transformo ideias em produtos digitais de alta qualidade.
+              </Text>
+              
+              <HStack spacing={4} pt={4}>
+                <Button
+                  as="a"
+                  href="#projects"
+                  bg={accentBlue}
+                  color="white"
+                  size="lg"
+                  fontWeight="500"
+                  _hover={{ transform: 'scale(1.03)', shadow: 'xl' }}
+                  transition="all 0.2s"
+                >
+                  Ver Projetos
+                </Button>
+                <Button
+                  as="a"
+                  href="#contact"
+                  variant="outline"
+                  borderColor={accentPurple}
+                  color={accentPurple}
+                  size="lg"
+                  fontWeight="500"
+                  _hover={{ 
+                    bg: accentPurple, 
+                    color: 'white',
+                    transform: 'scale(1.03)' 
+                  }}
+                  transition="all 0.2s"
+                >
+                  Entrar em Contato
+                </Button>
+              </HStack>
+            </VStack>
+          </GridItem>
+          
+          <GridItem>
+            <Box position="relative">
+              <Box
+                position="absolute"
+                inset={0}
+                bgGradient={`linear(to-r, ${accentBlue}, ${accentPurple})`}
+                borderRadius="2xl"
+                filter="blur(60px)"
+                opacity={0.2}
+              />
+              <Card
+                bg={surfaceColor}
+                border={`1px solid ${mutedColor}`}
+                borderRadius="2xl"
+                shadow="2xl"
+                backdropFilter="blur(10px)"
+                position="relative"
+              >
+                <CardBody p={8}>
+                  <HStack spacing={2} mb={4}>
+                    <Box w={3} h={3} borderRadius="full" bg="red.500" />
+                    <Box w={3} h={3} borderRadius="full" bg="yellow.500" />
+                    <Box w={3} h={3} borderRadius="full" bg="green.500" />
+                  </HStack>
+                  <VStack spacing={3} fontFamily="mono" fontSize="sm" align="start">
+                    <Text color={accentPurple}>
+                      const <Text as="span" color={textColor}>developer</Text> = {'{'}
+                    </Text>
+                    <Text pl={4} color={textSecondary}>
+                      name: <Text as="span" color="green.600">&apos;Vinícius&apos;</Text>,
+                    </Text>
+                    <Text pl={4} color={textSecondary}>
+                      role: <Text as="span" color="green.600">&apos;Fullstack&apos;</Text>,
+                    </Text>
+                    <Text pl={4} color={textSecondary}>
+                      skills: [<Text as="span" color="green.600">&apos;Java&apos;</Text>, <Text as="span" color="green.600">&apos;Spring&apos;</Text>, <Text as="span" color="green.600">&apos;Next.js&apos;</Text>],
+                    </Text>
+                    <Text pl={4} color={textSecondary}>
+                      passion: <Text as="span" color="orange.500">true</Text>
+                    </Text>
+                    <Text color={accentPurple}>{'}'}</Text>
+                  </VStack>
+                </CardBody>
+              </Card>
+            </Box>
+          </GridItem>
+        </Grid>
+
+        {/* Skills Section */}
+        <Box id="skills" py={20}>
+          <Heading size="xl" fontWeight="700" textAlign="center" mb={12}>
+            Habilidades & Tecnologias
+          </Heading>
+          <SimpleGrid columns={{ base: 2, md: 4 }} spacing={6}>
+            {skills.map((skill, i) => {
+              const Icon = skill.icon;
+              return (
+                <Card
+                  key={skill.name}
+                  bg={surfaceColor}
+                  border={`1px solid ${mutedColor}`}
+                  borderRadius="xl"
+                  p={6}
+                  _hover={{
+                    borderColor: accentBlue,
+                    shadow: 'xl',
+                    transform: 'translateY(-4px)'
+                  }}
+                  transition="all 0.3s"
+                  style={{ animationDelay: `${i * 50}ms` }}
+                  className="slide-up"
+                >
+                  <VStack spacing={3}>
+                    <Flex
+                      w={14}
+                      h={14}
+                      borderRadius="lg"
+                      bg={surfaceColor}
+                      align="center"
+                      justify="center"
+                      _groupHover={{ transform: 'scale(1.1)' }}
+                      transition="transform 0.2s"
+                    >
+                      <Icon size={28} color={skill.color} />
+                    </Flex>
+                    <Text fontWeight="600">{skill.name}</Text>
+                  </VStack>
+                </Card>
+              );
+            })}
+          </SimpleGrid>
+        </Box>
+
+        {/* Footer temporário */}
+        <Box textAlign="center" py={12}>
+          <Text fontSize="sm" color={useColorModeValue('#6B7280', '#9CA3AF')}>
+             2025 Vinícius Silva Queiroz  Desenvolvedor Fullstack
+          </Text>
+          <Text fontSize="sm" color={useColorModeValue('#6B7280', '#9CA3AF')} mt={2}>
+            Feito com Next.js, React e Chakra UI
+          </Text>
+        </Box>
+      </Container>
+    </Box>
   );
 }
