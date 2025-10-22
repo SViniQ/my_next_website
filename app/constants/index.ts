@@ -34,10 +34,10 @@ export const PROJECTS: Project[] = [
     featured: true
   },
   {
-    id: 'alma-showcase',
-    title: 'ALMA Tech Showcase',
-    description: 'Website institucional moderno com showcase de soluções tecnológicas, POCs de automação e demonstrações interativas de produtos inovadores.',
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Framer Motion'],
+    id: 'hemotherapy-system',
+    title: 'Hemotherapy System',
+    description: 'Sistema de hemoterapia com gerenciamento de doadores, gestão inteligente de doações.',
+    technologies: ['Next.js', 'TypeScript', 'Chakra UI', 'Vercel', 'Framer Motion'],
     gradient: 'linear(to-r, #F59E0B, #EF4444)',
     featured: false
   }
@@ -46,15 +46,15 @@ export const PROJECTS: Project[] = [
 export const EXPERIENCE: Experience[] = [
   {
     id: 'alma-ceo',
-    role: 'CEO & Chief Product Officer',
-    company: 'ALMA Tech Solutions',
-    period: '2024 - Presente',
+    role: 'Estagiário em Desenvolvimento de Sistemas',
+    company: 'Associação Brasileira de Pacientes Crônicos (ABPC)',
+    period: '2025 - Presente',
     description: 'Lidero estratégias de produto e coordeno equipes técnicas multidisciplinares em projetos de automação e soluções SaaS escaláveis.',
     technologies: ['Java', 'Spring Boot', 'Next.js', 'PostgreSQL', 'Docker', 'AWS'],
     achievements: [
-      'Desenvolveu arquiteturas escaláveis para +50k usuários',
-      'Implementou CI/CD reduzindo deploy time em 80%',
-      'Liderou migração para microserviços aumentando performance em 60%'
+      'Desenvolveu Site Principal da Associação Brasileira de Pacientes Crônicos (ABPC)',
+      'Ofereceu suporte de TI, desde Hardware até Software',
+      'Integrou soluções de automação para otimizar processos internos e administrativos'
     ]
   },
   {
@@ -69,13 +69,13 @@ export const EXPERIENCE: Experience[] = [
       'Certificação em metodologias ágeis (Scrum/Kanban)',
       'Especialização em arquiteturas de software escaláveis'
     ]
-  }
+  },
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { name: 'GitHub', url: 'https://github.com/SViniQ', icon: FiGithub, color: '#333' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/vinicius-silva-queiroz', icon: FiLinkedin, color: '#0077b5' },
-  { name: 'Email', url: 'mailto:vinicius@alma.tech', icon: FiMail, color: '#ea4335' }
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/viníciussilvaqueiroz', icon: FiLinkedin, color: '#0077b5' },
+  { name: 'Email', url: 'mailto:coder.fullstack.vinicius@gmail.com', icon: FiMail, color: '#ea4335' }
 ];
 
 export const NAV_ITEMS: NavItem[] = [

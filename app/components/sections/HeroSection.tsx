@@ -39,7 +39,7 @@ export const HeroSection: React.FC = () => {
   };
 
   const handleContactClick = () => {
-    const email = 'vinicius@alma.tech';
+    const email = 'coder.fullstack.vinicius@gmail.com';
     window.open(`mailto:${email}?subject=Contato via Portfolio`);
   };
 
@@ -88,7 +88,7 @@ export const HeroSection: React.FC = () => {
                 lineHeight="tight"
                 letterSpacing="-0.02em"
               >
-                Olá, eu sou{' '}
+                Olá, me chamo{' '}
                 <Text
                   as="span"
                   bgGradient={`linear(to-r, ${accentBlue}, ${accentPurple})`}
@@ -111,7 +111,7 @@ export const HeroSection: React.FC = () => {
                 lineHeight="relaxed"
                 fontWeight="400"
               >
-                Desenvolvedor <strong>Fullstack Sênior</strong> especializado em soluções escaláveis e intuitivas. 
+                Desenvolvedor <strong>Fullstack Júnior</strong> especializado em soluções escaláveis e intuitivas. 
                 Transformo ideias complexas em produtos digitais de alta performance e qualidade excepcional.
               </Text>
 
@@ -228,25 +228,28 @@ export const HeroSection: React.FC = () => {
                   {/* Code */}
                   <VStack spacing={3} fontFamily="'JetBrains Mono', monospace" fontSize="sm" align="start">
                     <Text color={accentPurple} fontWeight="600">
-                      const <Text as="span" color={textColor}>developer</Text> = {'{'}
+                      const <Text as="span" color={textColor}>desenvolvedor</Text> = {'{'}
                     </Text>
                     <Text pl={4} color={textSecondary}>
-                      name: <Text as="span" color="green.400" fontWeight="500">&apos;Vinícius&apos;</Text>,
+                      nome: <Text as="span" color="green.400" fontWeight="500">&apos;Vinícius&apos;</Text>,
                     </Text>
                     <Text pl={4} color={textSecondary}>
-                      role: <Text as="span" color="green.400" fontWeight="500">&apos;Fullstack Senior&apos;</Text>,
+                      funcao: <Text as="span" color="green.400" fontWeight="500">&apos;Fullstack Júnior&apos;</Text>,
                     </Text>
                     <Text pl={4} color={textSecondary}>
-                      skills: [<Text as="span" color="green.400" fontWeight="500">&apos;Java&apos;</Text>, <Text as="span" color="green.400" fontWeight="500">&apos;Spring&apos;</Text>, <Text as="span" color="green.400" fontWeight="500">&apos;Next.js&apos;</Text>],
+                      stacks: [<Text as="span" color="green.400" fontWeight="500">&apos;Java&apos;</Text>, <Text as="span" color="green.400" fontWeight="500">&apos;Spring&apos;</Text>, <Text as="span" color="green.400" fontWeight="500">&apos;Next.js&apos;</Text>],
                     </Text>
                     <Text pl={4} color={textSecondary}>
-                      experience: <Text as="span" color="orange.400" fontWeight="500">5</Text>,
+                      experiencia: <Text as="span" color="orange.400" fontWeight="500">1</Text>,
                     </Text>
                     <Text pl={4} color={textSecondary}>
-                      passion: <Text as="span" color="orange.400" fontWeight="500">true</Text>,
+                      tempo_de_experiencia: <Text as="span" color="orange.400" fontWeight="500">true</Text>,
                     </Text>
                     <Text pl={4} color={textSecondary}>
-                      coffee: <Text as="span" color="orange.400" fontWeight="500">∞</Text>
+                      quantidade_de_cafe: <Text as="span" color="orange.400" fontWeight="500">∞</Text>
+                    </Text>
+                    <Text pl={4} color={textSecondary}>
+                      dormir: <Text as="span" color="orange.400" fontWeight="500">false</Text>
                     </Text>
                     <Text color={accentPurple} fontWeight="600">{'}'}</Text>
                   </VStack>

@@ -5,6 +5,7 @@ import { Box } from '@chakra-ui/react';
 import { Header } from './components/layout/Header';
 import { HeroSection } from './components/sections/HeroSection';
 import { SkillsSection } from './components/sections/SkillsSection';
+import { ProjectsSection } from './components/sections/ProjectsSection';
 import { useThemeColors } from './hooks/useThemeColors';
 
 /**
@@ -33,6 +34,7 @@ export default function Portfolio() {
       <main role="main">
         <HeroSection />
         <SkillsSection />
+        <ProjectsSection />
       </main>
 
       {/* Footer temporário */}
